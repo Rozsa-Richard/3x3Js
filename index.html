@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+            border:  solid black 1px;
+        }
+    </style>
+</head>
+<body>
+    <div id="thediv">
+
+    </div>
+    <button onclick="random()">Kavarás</button>
+    <script>
+        let outputdiv = document.getElementById("thediv");
+        outputdiv.innerHTML ="<table><tr><td>"+1+"</td><td>"+2+"</td><td>"+3+"</td></tr><tr><td>"+4+"</td><td>"+5+"</td><td>"+6+"</td></tr><tr><td>"+7+"</td><td>"+8+"</td><td>"+9+"</td></tr></table>"
+
+        function random(){
+            one = getRandomInt(9)+1;
+            while (true){
+                two = getRandomInt(9)+1;
+                if (one != two){
+                    break;
+                }
+            }
+            three = getRandomInt(9)+1;
+            while (true){
+                if (one == three || two== three){
+                    three = getRandomInt(9)+1;
+                }
+                else {
+                    break;
+                }
+            }
+            four = getRandomInt(9)+1;
+            while (true){
+                if (four == one ||four == two || four == three){
+                    four = getRandomInt(9)+1;
+                }
+                else {
+                    break;
+                }
+            }
+            five = getRandomInt(9)+1;
+            while (true){
+                if (five == one ||five == two || five == three || five == four){
+                    five = getRandomInt(9)+1;
+                }
+                else {
+                    break;
+                }
+            }
+            six = getRandomInt(9)+1;
+            while (true){
+                if (six == one ||six == two || six == three || six == four || six == five){
+                    six = getRandomInt(9)+1;
+                }
+                else {
+                    break;
+                }
+            }
+            seven = getRandomInt(9)+1;
+            while (true){
+                if (seven == one ||seven == two || seven == three || seven == four || seven == five || seven == six){
+                    seven = getRandomInt(9)+1;
+                }
+                else {
+                    break;
+                }
+            }
+            eight = getRandomInt(9)+1;
+            while (true){
+                if (eight == one ||eight == two || eight == three || eight == four || eight == five || eight == six || eight == seven){
+                    eight = getRandomInt(9)+1;
+                }
+                else {
+                    break;
+                }
+            }
+            nine= 45- (one+ two + three + four +five +six + seven +eight);
+            let outputdiv = document.getElementById("thediv");
+            outputdiv.innerHTML ="<table><tr><td>"+one+"</td><td>"+two+"</td><td>"+three+"</td></tr><tr><td>"+four+"</td><td>"+five+"</td><td>"+six+"</td></tr><tr><td>"+seven+"</td><td>"+eight+"</td><td>"+nine+"</td></tr></table>"
+        }
+    </script>
+</body>
+</html>
