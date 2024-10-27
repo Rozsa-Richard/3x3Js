@@ -7,83 +7,58 @@
     <style>
         td {
             border:  solid black 1px;
+            height: 20px;
+            width: 20px;
+            text-align: center;
+        }
+        #main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        button{
+            margin-left: 30px;
         }
     </style>
 </head>
 <body>
-    <div id="thediv">
-
+    <div id="main">
+        <div id="starter"></div>
+        <div id="randomized"></div>
+        <button onclick="randomize()">Kavarás</button>
     </div>
-    <button onclick="random()">Kavarás</button>
     <script>
-        let outputdiv = document.getElementById("thediv");
-        outputdiv.innerHTML ="<table><tr><td>"+1+"</td><td>"+2+"</td><td>"+3+"</td></tr><tr><td>"+4+"</td><td>"+5+"</td><td>"+6+"</td></tr><tr><td>"+7+"</td><td>"+8+"</td><td>"+9+"</td></tr></table>"
 
-        function random(){
-            one = getRandomInt(9)+1;
-            while (true){
-                two = getRandomInt(9)+1;
-                if (one != two){
-                    break;
+        window.onload=function(){
+            const starter = document.getElementById("starter");
+            starter.innerHTML ="<table><tr><td>"+1+"</td><td>"+2+"</td><td>"+3+"</td></tr><tr><td>"+4+"</td><td>"+5+"</td><td>"+6+"</td></tr><tr><td>"+7+"</td><td>"+8+"</td><td>"+9+"</td></tr></table>";
+        }
+
+        function randomize(){
+            const starter = document.getElementById("starter");
+            let randomized = document.getElementById("randomized");
+            starter.style.display ="none";
+
+            let oneToNine = ['1','2','3','4','5','6','7','8','9'];
+            let writeOut= "<table>";
+            for (let i = 0; i < 9; i++) {
+                let thisNumber = get_random(oneToNine);
+                oneToNine = oneToNine.filter(i => i !==thisNumber);
+                if ((i +1)%3==1){
+                    writeOut+="<tr>";
+                }
+                writeOut+="<td>"+thisNumber+"</td>";
+                if ((i+1)%3 ==0){
+                    writeOut+="</tr>";
                 }
             }
-            three = getRandomInt(9)+1;
-            while (true){
-                if (one == three || two== three){
-                    three = getRandomInt(9)+1;
-                }
-                else {
-                    break;
-                }
-            }
-            four = getRandomInt(9)+1;
-            while (true){
-                if (four == one ||four == two || four == three){
-                    four = getRandomInt(9)+1;
-                }
-                else {
-                    break;
-                }
-            }
-            five = getRandomInt(9)+1;
-            while (true){
-                if (five == one ||five == two || five == three || five == four){
-                    five = getRandomInt(9)+1;
-                }
-                else {
-                    break;
-                }
-            }
-            six = getRandomInt(9)+1;
-            while (true){
-                if (six == one ||six == two || six == three || six == four || six == five){
-                    six = getRandomInt(9)+1;
-                }
-                else {
-                    break;
-                }
-            }
-            seven = getRandomInt(9)+1;
-            while (true){
-                if (seven == one ||seven == two || seven == three || seven == four || seven == five || seven == six){
-                    seven = getRandomInt(9)+1;
-                }
-                else {
-                    break;
-                }
-            }
-            eight = getRandomInt(9)+1;
-            while (true){
-                if (eight == one ||eight == two || eight == three || eight == four || eight == five || eight == six || eight == seven){
-                    eight = getRandomInt(9)+1;
-                }
-                else {
-                    break;
-                }
-            }
-            nine= 45- (one+ two + three + four +five +six + seven +eight);
-            let outputdiv = document.getElementById("thediv");
-            outputdiv.innerHTML ="<table><tr><td>"+one+"</td><td>"+two+"</td><td>"+three+"</td></tr><tr><td>"+four+"</td><td>"+five+"</td><td>"+six+"</td></tr><tr><td>"+seven+"</td><td>"+eight+"</td><td>"+nine+"</td></tr></table>"
+            writeOut +="</table>";
+            randomized.innerHTML = writeOut;
+        }
+
+        function get_random (list) {
+            return list[Math.floor((Math.random()*list.length))];
         }
     </script>
 </body>
